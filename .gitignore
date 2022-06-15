@@ -1,5 +1,6 @@
 .vs/
 Debug/
+packages/
 
 *~
 *.exe
@@ -12,3 +13,7 @@ Debug/
 *.pch
 *.log
 *.sln
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+*.config
