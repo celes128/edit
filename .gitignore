@@ -1,0 +1,14 @@
+.vs/
+Debug/
+
+*~
+*.exe
+*.ilk
+*.obj
+*.idb
+*.pdb
+*.tlog
+*.lastbuildstage
+*.pch
+*.log
+*.sln
