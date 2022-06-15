@@ -61,16 +61,20 @@ namespace edit {
 			m_items[m_top] = x;
 		}
 
-		//// Pop removes the top element if the stack is not empty.
-		//// Does nothing if the stack is empty.
-		//void Pop()
-		//{
-		//	if (!Empty()) {
-		//		if (Size() > 1) decrement(m_top);
+		// Pop removes the top element if the stack is not empty.
+		// Does nothing if the stack is empty.
+		void pop()
+		{
+			if (empty()) {
+				return;
+			}
 
-		//		--m_size;
-		//	}
-		//}
+			if (size() > 1) {
+				decrement(m_top);
+			}
+
+			--m_size;
+		}
 
 	private:
 		void increment(size_t &i)
