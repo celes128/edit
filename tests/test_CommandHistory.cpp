@@ -3,7 +3,7 @@
 
 TEST(CommandHistory, Ctor)
 {
-	edit::CommandHistory h(16);
+	edit::CommandHistory h(4);
 
-	EXPECT_EQ(h.capacity(), 16);
+	EXPECT_EQ(h.capacity(), 4);
 }
