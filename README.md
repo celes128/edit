@@ -1,2 +1,3 @@
 This is a library for editing any type of documents.
-It has commands and a command history.
+It uses interfaces for commands and documents.
+There is a command history concrete class to support undo and redo operations.
