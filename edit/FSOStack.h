@@ -10,48 +10,56 @@ namespace edit {
 	template <class T>
 	class FSOStack {
 	public:
-		FSOStack(int capacity)
+		FSOStack(size_t capacity)
 			: m_capacity(capacity)
 			, m_size(0)
 			, m_bottom(0)
 			, m_top(0)
-		{}
+		{
+			assert(capacity >= 1);
+
+			// Fill with T's default value but keeping the size to zero.
+			m_items.reserve(m_capacity);
+			for (size_t i = 0; i < m_capacity; i++) {
+				m_items.push_back(T());
+			}
+		}
 
 		size_t capacity() const { return m_capacity; }
-		//size_t Size() const { return m_size; }
-		//bool Empty() const { return Size() == 0; }
-		//bool Full() const { return Size() == Capacity(); }
+		size_t size() const { return m_size; }
+		bool empty() const { return size() == 0; }
+		bool full() const { return size() == capacity(); }
 
-		//// PRECONDITIONS
-		////	* !Empty()
-		////
-		//// Top returns a reference to the top item.
-		//const T& Top() const
-		//{
-		//	assert(!Empty());
-		//	return m_items[m_top];
-		//}
+		// Top returns a reference to the top item.
+		// PRECONDITIONS
+		//	!Empty()
+		const T& top() const
+		{
+			assert(!empty());
 
-		//// Push adds an item at the top of the stack.
-		//// If the stack is full, the bottom item is overwritten.
-		//void Push(const T &x)
-		//{
-		//	// 1. Update indices and size
-		//	if (Full()) {
-		//		increment(m_top);
-		//		increment(m_bottom);
-		//	}
-		//	else if (Empty()) {
-		//		m_size = 1;
-		//	}
-		//	else {
-		//		increment(m_top);
-		//		++m_size;
-		//	}
+			return m_items[m_top];
+		}
 
-		//	// 2. Insert
-		//	m_items[m_top] = x;
-		//}
+		// Push adds an item at the top of the stack.
+		// If the stack is full, the bottom item is overwritten.
+		void push(const T &x)
+		{
+			// 1. Update indices and size
+			if (full()) {
+				increment(m_top);
+				increment(m_bottom);
+			}
+			else if (empty()) {
+				m_size = 1;
+			}
+			else {
+				increment(m_top);
+				++m_size;
+			}
+
+			// 2. Insert
+			m_items[m_top] = x;
+		}
 
 		//// Pop removes the top element if the stack is not empty.
 		//// Does nothing if the stack is empty.
