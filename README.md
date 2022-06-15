@@ -8,7 +8,6 @@ There is a command history concrete class to support undo and redo operations.
 // When the history becomes full, the commands are overwritten.
 edit::CommandHistory	h(16);
 
-
 // CmdCutSelection would be a concrete class that you implement.
 class CmdCutSelection : public ICommand { };
 
